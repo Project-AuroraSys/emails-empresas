@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Estilizado</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f9f9f9; 
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            max-width: 600px; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.1); 
+            margin: 0 auto;
+        }
+        h2 { 
+            color: #2c3e50; 
+            font-size: 24px; 
+        }
+        p { 
+            font-size: 16px; 
+            color: #333; 
+            line-height: 1.6; 
+        }
+
+        .button {
+            background: #00f; /* Cor de fundo neon (azul) */
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px; /* Bordas arredondadas */
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #0ff; /* Cor neon no hover (ciano) */
+            box-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff; /* Intensifica o efeito neon */
+            transform: scale(1.1); /* Aumenta o tamanho do botão ao passar o mouse */
+        }
+
+        .button:active {
+            background: #ff0; /* Cor neon amarela ao clicar */
+            box-shadow: 0 0 15px #ff0, 0 0 25px #ff0, 0 0 35px #ff0; /* Brilho neon amarelo ao clicar */
+        }
+
+        .footer { 
+            font-size: 12px; 
+            color: #777; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📢 Aviso Importante!</h2>
+        <p>Olá, [empresa_name],</p>
+        <p>Somos a Central de Pesquisa do projeto <strong>Aurora Systems Enterprise</strong> e gostaríamos de contar com sua colaboração no preenchimento de nosso <strong>Questionário Diagnóstico de Transformação Digital</strong>.</p>
+        <p>Este questionário foi desenvolvido para levantar informações sobre o mercado e as práticas de transformação digital em empresas como a sua. As respostas ajudarão a mapear o nível de digitalização e os desafios enfrentados pelas empresas no processo de transformação.</p>
+        <p>O formulário contém perguntas que abrangem os seguintes tópicos:</p>
+        <ul>
+            <li>Infraestrutura tecnológica atual</li>
+            <li>Uso de ferramentas digitais e automação</li>
+            <li>Capacitação digital da equipe</li>
+            <li>Desafios e oportunidades no processo de digitalização</li>
+        </ul>
+        <p>Para preencher o questionário, clique no botão abaixo:</p>
+        <a href="https://forms.gle/QvYhLpzGCsU2tE7Y9" class="button">Clique Aqui para Preencher o Questionário</a>
+        <p class="footer">Atenciosamente,<br>Cental de Pesquisa Aurora Systems Enterprise<br>BlueSky Project Ltda</p>
+    </div>
+</body>
+</html>
