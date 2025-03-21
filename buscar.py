@@ -48,16 +48,20 @@ user_agents = [
 conn = sqlite3.connect("emails_empresas.db")
 cursor = conn.cursor()
 
-# Buscar apenas CNPJs que tenham email ou telefone como NULL
-cursor.execute("SELECT cnpj FROM empresa WHERE email IS NULL OR telefone IS NULL")
+# Buscar apenas CNPJs que tenham email e telefone como NULL
+cursor.execute("SELECT cnpj, email, telefone FROM empresa")
 empresas = cursor.fetchall()
 
 # Loop para buscar informações
-for index, empresa in enumerate(empresas):
-    if index % 1 == 0:
-        user_agent = random.choice(user_agents)  # Mudar User-Agent a cada 2 buscas
+for index, (cnpj, email_db, telefone_db) in enumerate(empresas):
+    # Se já existir email ou telefone, pular para o próximo
+    if email_db or telefone_db:
+        print(f"🔹 Pulando {cnpj}, já possui email ou telefone no banco.")
+        continue
     
-    cnpj = empresa[0]
+    if index % 1 == 0:
+        user_agent = random.choice(user_agents)  # Mudar User-Agent a cada busca
+    
     print(f"Buscando informações para o CNPJ: {cnpj} | User-Agent: {user_agent}")
     
     email, telefone = buscar_info_cnpj(cnpj, user_agent)
@@ -69,6 +73,7 @@ for index, empresa in enumerate(empresas):
         print(f"⚠️ Nenhuma informação encontrada para {cnpj}")
     
     if index % 2 == 1:
-        time.sleep(5 + random.uniform(0, 10))  # Esperar apenas após 2 buscas
+        time.sleep(5 + random.uniform(0, 10))  # Esperar após 2 buscas
 
 conn.close()
+
