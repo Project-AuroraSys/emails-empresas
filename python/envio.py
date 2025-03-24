@@ -2,6 +2,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import sqlite3
+import time
 
 # Configuração do e-mail
 EMAIL_SENDER = "projectaurorasys@gmail.com"  # Seu e-mail
@@ -19,10 +20,11 @@ def enviar_email(destinatario, empresa_name):
     msg["From"] = EMAIL_SENDER
     msg["To"] = destinatario
     msg["Subject"] = "Participe do nosso Diagnóstico de Transformação Digital🔎"
-    msg.add_header("Reply-To", EMAIL_SENDER)  # Adiciona "Responder Para"
-    
+    msg.add_header("Reply-To", "projectaurorasys@gmail.com")  # Adiciona "Responder Para"
+    msg.add_header("List-Unsubscribe", "<mailto:unsubscribe@aurorasystems.com>, <https://aurorasystems.com/unsubscribe>")
+
     # Lê o conteúdo HTML do arquivo
-    with open("web\\email.html", "r", encoding="utf-8") as file:
+    with open("web\\email2.html", "r", encoding="utf-8") as file:
         html_content = file.read()
     
     # Substitui o nome da empresa no conteúdo HTML
@@ -50,7 +52,8 @@ def buscar_emails():
         
         for empresa in empresas:
             empresa_name, email = empresa
-            enviar_email(email, empresa_name)  # Envia o e-mail para cada empresa
+            enviar_email(email, empresa_name)
+            time.sleep(5)  # Evita bloqueios por envio rápido
         
         conn.close()
     except sqlite3.Error as e:
