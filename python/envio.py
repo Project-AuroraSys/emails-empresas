@@ -18,7 +18,7 @@ def enviar_email(destinatario, empresa_name):
     msg = MIMEMultipart()
     msg["From"] = EMAIL_SENDER
     msg["To"] = destinatario
-    msg["Subject"] = "Participação no Diagnóstico de Transformação Digital🔎"
+    msg["Subject"] = "Participe do nosso Diagnóstico de Transformação Digital🔎"
     msg.add_header("Reply-To", EMAIL_SENDER)  # Adiciona "Responder Para"
     
     # Lê o conteúdo HTML do arquivo
